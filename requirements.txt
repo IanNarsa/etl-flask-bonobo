@@ -1,0 +1,6 @@
+bonobo
+pandas
+xmltodict
+flask
+flask_restful
+requests
