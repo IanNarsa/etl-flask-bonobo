@@ -12,8 +12,9 @@ class Mastercuaca(Resource):
             try:
                 print("scrape ",wilayah)
                 #wilayah = 'DIYogyakarta'
-                url = 'http://data.bmkg.go.id/datamkg/MEWS/DigitalForecast/DigitalForecast-'+wilayah+'.xml'
+                url = 'https://data.bmkg.go.id/datamkg/MEWS/DigitalForecast/DigitalForecast-'+wilayah+'.xml'
                 body = req.get(url)
+                print(body)
                 parse_data = xmltodict.parse(body.text,attr_prefix='')
                 hasil = json.dumps(parse_data)
                 final = json.loads(hasil)
@@ -25,9 +26,9 @@ class Mastercuaca(Resource):
             
         def extract(x):
             try:
-                print("extract ",x)
                 yield scrape_bmkg(x)[0]
             except :
+                print(x)
                 print("Data Tidak Ditemukan")
             
 
